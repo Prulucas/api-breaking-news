@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+
 import { Card } from "../../components/cards/card";
 import { Navbar } from "../../components/navbar/navbar";
 
-import { getAllPosts, getTopPost } from "../../services/postsServices";
+import {getAllPosts, getTopPost} from "../../services/postsServices"
 import { HomeBody, HomeHeader } from "./HomeStyled";
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
         setPosts(postsResponse.data.results);
 
         const topPostResponse = await getTopPost();
-        setTopPost(topPostResponse.data.post);
+        setTopPost(topPostResponse.data.news);
     }
 
     useEffect(() => {
@@ -25,15 +26,15 @@ export default function Home() {
     return (
     <>
         <Navbar />
-        <HomeHeader>
-            <Card
-            top={true}
-            title={topPost.title}
-            text={topPost.text}
-            banner={topPost.banner}
-            likes={topPost.likes}
-            comments={topPost.comments}
-            />
+            <HomeHeader>
+                <Card
+                    top={true}
+                    title={topPost.title}
+                    text={topPost.text}
+                    banner={topPost.banner}
+                    likes={topPost.likes}
+                    comments={topPost.comments}
+                />
             </HomeHeader>
             <HomeBody>
             {posts.map((item) => (
