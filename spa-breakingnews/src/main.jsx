@@ -1,10 +1,34 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from "react-dom/client";
 import './globalStyled.jsx'
-import App from './App.jsx'
+import { createBrowserRouter, RouterProvider} from "react-router-dom" 
+import { Navbar } from './components/navbar/navbar.jsx'
+import Home from './pages/home/home.jsx'
+import { Search } from './pages/search/search.jsx'
+import { GlobalStyle } from './globalStyled.jsx'
+import ErrorPage from './pages/ErrorPage/errorPage.jsx';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navbar />,
+    errorElement: <ErrorPage/>,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/search",
+        element: <Search />
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <GlobalStyle/>
+    <RouterProvider router={router}/>
+  </React.StrictMode>,
 )
