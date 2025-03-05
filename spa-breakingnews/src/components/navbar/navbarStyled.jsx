@@ -54,11 +54,11 @@ export const InputSpace = styled.div`
         background-color: #f5f5f5;
         border: none;
         width: 100%;
-        border-radius: .3rem;
+        border-radius: .3rem;  
+    }
 
-        :focus {
+    input:focus {
         border: 1px solid #0bade3;
-        }
     }
 `;
 
@@ -78,7 +78,17 @@ export const Button = styled.button`
     letter-spacing: 0.1rem;
     text-transform: uppercase;
 
-    :hover {
-    background-color: #0a86af;
-}
+    &:hover {
+    background-color: #057296; 
+    }
+`;
+
+export const ErrorSpan = styled.span`
+    background-color: #ffaeae;
+    color: #9e0000;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
 `;
