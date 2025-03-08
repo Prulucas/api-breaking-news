@@ -7,6 +7,7 @@ import Home from './pages/home/home.jsx'
 import { Search } from './pages/search/search.jsx'
 import { GlobalStyle } from './globalStyled.jsx'
 import ErrorPage from './pages/ErrorPage/errorPage.jsx';
+import { Authentication } from './pages/authentication/authentication.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/auth",
+    element: <Authentication />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

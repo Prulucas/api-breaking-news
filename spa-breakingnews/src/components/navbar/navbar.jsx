@@ -20,6 +20,11 @@ export function Navbar(){
         navigate(`/search/${title}`);
         reset();
     }
+
+    function goAuth(){
+        navigate("/auth")
+    }
+
     return(
         <>
             <Nav>
@@ -35,7 +40,7 @@ export function Navbar(){
                     <ImgLogo src={logo} alt="Logo Breaking News" />
                 </Link>
 
-                <Button>Entrar</Button>
+                <Button onClick={goAuth}>Entrar</Button>
             </Nav>
             {errors.title && <ErrorSpan>{errors.title.message}</ErrorSpan>}
             <Outlet/>
