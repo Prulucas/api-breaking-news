@@ -2,13 +2,11 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import logo from "../../images/LogoBN.png";
 import {Nav, ImgLogo, InputSpace, ErrorSpan} from "./navbarStyled.jsx"
 import {useForm} from "react-hook-form"
-import z from "zod";
 import {zodResolver} from "@hookform/resolvers/zod"
 import {Button} from "../button/button.jsx"
+import { searchSchema } from "../../schemas/searchSchema.js";
 
-const searchSchema = z.object({
-    title: z.string().nonempty({message: "A pesquisa não pode ser vazia"}).refine(value => !/^\s*$/.test(value), {message: "A pesquisa não pode ter apenas espaços"}),
-})
+
 
 export function Navbar(){
     const {register, handleSubmit, reset, formState: {errors}} = useForm({
