@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { Card } from "../../components/cards/card";
-
+import Cookies from "js-cookie";
 import {getAllPosts, getTopPost} from "../../services/postsServices"
 import { HomeBody, HomeHeader } from "./HomeStyled";
 
@@ -19,7 +19,8 @@ export default function Home() {
     }
 
     useEffect(() => {
-    findPost();
+        findPost();
+        console.log(Cookies.get("token"));
     }, []);
 
     return (

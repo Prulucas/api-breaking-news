@@ -8,6 +8,8 @@ import { signinSchema } from "../../schemas/signinSchema.js";
 import {ErrorSpan} from "../../components/navbar/navbarStyled.jsx"
 import { signupSchema } from "../../schemas/signupSchema.js";
 import { signup } from "../../services/usersService.js";
+import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
 
 
 export function Authentication() {
@@ -20,10 +22,13 @@ export function Authentication() {
         console.log(data)
     }
 
+    const navigate = useNavigate();
+
     async function upHandleSubmit(data){
         try {
             const response = await signup(data);
-            console.log(response)
+            Cookies.set("token", response.data.token, {expires: 1});
+            navigate("/");
         } catch (error){
             console.log(error)
         }
