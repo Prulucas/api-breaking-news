@@ -9,6 +9,13 @@ export function signup(data) {
     return response;
 }
 
+export async function signin(data) {
+    const response = await axios.post(`${baseURL}/auth/login`, data);
+    return response;
+}
+
+
+
 function generateUserName(name) {
     const withoudSpace = name.replace(/\s/g, "").toLowerCase();
     const randomNumber = Math.floor(Math.random() * 1000);
